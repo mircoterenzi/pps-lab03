@@ -135,7 +135,7 @@ object Lab3:
 
   // -------------------------------------------------- TASK 2 --------------------------------------------------
 
-  def getCourses(s: Sequence[Person]): Sequence[String] = flatMap(s)(_ match
+  def getCourses(s: Sequence[Person]): Sequence[String] = flatMap(s) {
     case Teacher(_, c) => Cons(c, Nil())
     case _ => Nil()
-  )
+  }
