@@ -6,8 +6,7 @@ import tasks.Lab3.*
 import u02.Modules.Person.*
 import u03.Sequences.Sequence.*
 
-class PersonTest:
-
+class Lab3Test:
   val sequence = Cons(Teacher("Viroli", "PPS"), Cons(Teacher("Ricci", "PCD"),
       Cons(Student("Terenzi", 2025), Cons(Teacher("Viroli", "OOP"), Nil()))))
 
