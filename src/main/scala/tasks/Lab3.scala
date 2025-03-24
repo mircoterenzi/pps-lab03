@@ -6,6 +6,8 @@ import u03.Optionals.Optional
 import u03.Optionals.Optional.{Empty, Just, orElse}
 import u03.Sequences.Sequence
 import u03.Sequences.Sequence.{Cons, Nil, filter, map}
+import u03.Streams.*
+import u03.Streams.Stream.*
 
 import scala.annotation.tailrec
 
@@ -151,3 +153,9 @@ object Lab3:
       case _ => false
     }
     foldLeft(map(teachers) { case Teacher(_, c) => c })(0)((acc, elem) => acc + 1)
+
+  // -------------------------------------------------- TASK 3 --------------------------------------------------
+  
+  def fill[A](n: Int)(k: A): Stream[A] = n match
+    case 0 => empty()
+    case _ => cons(k, fill(n - 1)(k))

@@ -1,12 +1,17 @@
 package tasks
 
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 import tasks.Lab3.*
 import u02.Modules.Person.*
 import u03.Sequences.Sequence.*
+import u03.Streams.*
+import u03.Streams.Stream.*
 
 class Lab3Test:
+
+  // -------------------------------------------------- TASK 2 --------------------------------------------------
+
   val sequence = Cons(Teacher("Viroli", "PPS"), Cons(Teacher("Ricci", "PCD"),
       Cons(Student("Terenzi", 2025), Cons(Teacher("Viroli", "OOP"), Nil()))))
 
@@ -19,3 +24,8 @@ class Lab3Test:
 
   @Test def testGetNumberCourses() =
     assertEquals(3, getNumberCourses(sequence))
+
+  // -------------------------------------------------- TASK 3 --------------------------------------------------
+
+  @Test def testFill() =
+    assertEquals(Stream.toList(Stream.fill(3)("a")), Cons("a", Cons("a", Cons("a", Nil()))))

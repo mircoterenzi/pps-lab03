@@ -39,7 +39,13 @@ object Streams extends App:
 
     // Task 3
 
-    def takeWhile[A](stream: Stream[A])(pred: A => Boolean): Stream[A] = ???
+    def takeWhile[A](stream: Stream[A])(pred: A => Boolean): Stream[A] = stream match
+      case Cons(head, tail) if pred(head()) => cons(head(), takeWhile(tail())(pred))
+      case _ => Empty()
+
+    def fill[A](n: Int)(k: A): Stream[A] = n match
+      case 0 => empty()
+      case _ => cons(k, fill(n - 1)(k))
     
     def interleave[A](stream1: Stream[A], stream2: Stream[A]): Stream[A] = ???
   end Stream
