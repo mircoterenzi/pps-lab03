@@ -119,12 +119,11 @@ object Sequences: // Essentially, generic linkedlists
      * E.g., [10, 20, 30] => [10, 20, 30]
      */
     def distinct[A](s: Sequence[A]): Sequence[A] =
-      @tailrec
-      def distinctTail[B](s: Sequence[B], acc: Sequence[B]): Sequence[B] = s match
-        case Cons(h, t) if contains(acc)(h) => distinctTail(t, acc)
-        case Cons(h, t) => distinctTail(t, Cons(h, acc))
-        case _ => acc
-      reverse(distinctTail(s, Nil()))
+      def _distinct[B](s: Sequence[B], acc: Sequence[B]): Sequence[B] = s match
+        case Cons(h, t) if contains(acc)(h) => _distinct(t, acc)
+        case Cons(h, t) => Cons(h, _distinct(t, Cons(h, acc)))
+        case _ => Nil()
+      _distinct(s, Nil())
 
     /*
      * Group contiguous elements in the sequence
