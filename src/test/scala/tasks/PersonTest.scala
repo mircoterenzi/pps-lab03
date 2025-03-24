@@ -13,3 +13,7 @@ class PersonTest:
 
   @Test def testGetCoursesBy() =
     assertEquals(Cons("PPS", Cons("PCD", Cons("OOP", Nil()))), getCourses(sequence))
+
+  @Test def testFoldLeft() =
+    val lst = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
+    assertEquals(foldLeft(lst)(0)(_ - _), -16)

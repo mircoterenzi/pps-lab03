@@ -139,3 +139,8 @@ object Lab3:
     case Teacher(_, c) => Cons(c, Nil())
     case _ => Nil()
   }
+
+  @tailrec
+  def foldLeft[A, B](s: Sequence[A])(acc: B)(op: (B, A) => B): B = s match
+    case Cons(h,t) => foldLeft(t)(op(acc, h))(op)
+    case _ => acc
