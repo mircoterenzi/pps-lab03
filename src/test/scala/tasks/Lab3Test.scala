@@ -20,7 +20,7 @@ class Lab3Test:
 
   @Test def testFoldLeft() =
     val lst = Cons(3, Cons(7, Cons(1, Cons(5, Nil()))))
-    assertEquals(foldLeft(lst)(0)(_ - _), -16)
+    assertEquals(-16, foldLeft(lst)(0)(_ - _))
 
   @Test def testGetNumberCourses() =
     assertEquals(3, getNumberCourses(sequence))
@@ -28,7 +28,7 @@ class Lab3Test:
   // -------------------------------------------------- TASK 3 --------------------------------------------------
 
   @Test def testFill() =
-    assertEquals(Stream.toList(Stream.fill(3)("a")), Cons("a", Cons("a", Cons("a", Nil()))))
+    assertEquals(Cons("a", Cons("a", Cons("a", Nil()))), Stream.toList(Stream.fill(3)("a")))
 
   @Test def testFibonacci() =
     val fib5 = Cons(0, Cons(1, Cons(1, Cons(2, Cons(3, Nil())))))
