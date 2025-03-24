@@ -5,7 +5,7 @@ import u02.Modules.Person.*
 import u03.Optionals.Optional
 import u03.Optionals.Optional.{Empty, Just, orElse}
 import u03.Sequences.Sequence
-import u03.Sequences.Sequence.{Cons, Nil, filter}
+import u03.Sequences.Sequence.{Cons, Nil, filter, map}
 
 import scala.annotation.tailrec
 
@@ -144,3 +144,10 @@ object Lab3:
   def foldLeft[A, B](s: Sequence[A])(acc: B)(op: (B, A) => B): B = s match
     case Cons(h,t) => foldLeft(t)(op(acc, h))(op)
     case _ => acc
+    
+  def getNumberCourses(s: Sequence[Person]): Int =
+    val teachers = filter(s) {
+      case Teacher(_, _) => true
+      case _ => false
+    }
+    foldLeft(map(teachers) { case Teacher(_, c) => c })(0)((acc, elem) => acc + 1)
