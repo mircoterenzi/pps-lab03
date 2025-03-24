@@ -29,3 +29,8 @@ class Lab3Test:
 
   @Test def testFill() =
     assertEquals(Stream.toList(Stream.fill(3)("a")), Cons("a", Cons("a", Cons("a", Nil()))))
+
+  @Test def testFibonacci() =
+    val fib5 = Cons(0, Cons(1, Cons(1, Cons(2, Cons(3, Nil())))))
+    val fibonacci: Stream[Int] = Stream.fibonacci()
+    assertEquals(Cons(0, Cons(1, Cons(1, Cons(2, Cons(3, Nil()))))), Stream.toList(Stream.take(fibonacci)(5)))
