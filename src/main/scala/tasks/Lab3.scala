@@ -132,3 +132,10 @@ object Lab3:
    */
   def partition[A](s: Sequence[A])(pred: A => Boolean): (Sequence[A], Sequence[A]) =
     (filter(s)(pred), filter(s)(!pred(_)))
+
+  // -------------------------------------------------- TASK 2 --------------------------------------------------
+
+  def getCourses(s: Sequence[Person]): Sequence[String] = flatMap(s)(_ match
+    case Teacher(_, c) => Cons(c, Nil())
+    case _ => Nil()
+  )
