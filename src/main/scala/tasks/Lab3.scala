@@ -105,12 +105,9 @@ object Lab3:
    * E.g., [10, 20, 10, 30] => [10, 20, 30]
    * E.g., [10, 20, 30] => [10, 20, 30]
    */
-  def distinct[A](s: Sequence[A]): Sequence[A] =
-    def _distinct[B](s: Sequence[B], acc: Sequence[B]): Sequence[B] = s match
-      case Cons(h, t) if contains(acc)(h) => _distinct(t, acc)
-      case Cons(h, t) => Cons(h, _distinct(t, Cons(h, acc)))
-      case _ => Nil()
-    _distinct(s, Nil())
+  def distinct[A](s: Sequence[A]): Sequence[A] = s match
+    case Cons(h, t) => Cons(h, distinct(filter(t)(_ != h)))
+    case _ => Nil()
 
   /*
    * Group contiguous elements in the sequence
